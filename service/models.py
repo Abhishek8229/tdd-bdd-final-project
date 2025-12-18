@@ -201,7 +201,8 @@ class Product(db.Model):
 
         """
         logger.info("Processing name query for %s ...", name)
-        return cls.query.filter(cls.name == name)
+        return cls.query.filter(cls.name == name).all()
+
 
     @classmethod
     def find_by_price(cls, price: Decimal) -> list:
@@ -232,7 +233,8 @@ class Product(db.Model):
 
         """
         logger.info("Processing available query for %s ...", available)
-        return cls.query.filter(cls.available == available)
+        return cls.query.filter(cls.available == available).all()
+
 
     @classmethod
     def find_by_category(cls, category: Category = Category.UNKNOWN) -> list:
@@ -246,4 +248,5 @@ class Product(db.Model):
 
         """
         logger.info("Processing category query for %s ...", category.name)
-        return cls.query.filter(cls.category == category)
+        return cls.query.filter(cls.category == category).all()
+
